@@ -1,7 +1,7 @@
 #!/bin/bash
 
 #
-# Simple Cross Platform C++ Example CI Build Script
+# Project Hydra
 # (C) 2016 Christian Gunderman
 #
 

@@ -1,5 +1,4 @@
-# Cross Platform C/C++ CMAKE Hello World
-[![Build Status](https://travis-ci.org/gundermanc/lies-makefiles-and-lies.svg?branch=master)](https://travis-ci.org/gundermanc/lies-makefiles-and-lies)
+# Project Hydra
+[![Build Status](https://travis-ci.org/gundermanc/hydra.svg?branch=master)](https://travis-ci.org/gundermanc/hydra)
 
-This repo is a small example for setting up C/C++ to build cross platform with C++, CMAKE, GoogleTest,
-and a Continuous Integration Build.
+Take a look, but I will not be disclosing what it is yet ;)
