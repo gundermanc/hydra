@@ -4,7 +4,7 @@
 
 #include "gtest/gtest.h"
 
-#include "hydra/hydra-core.h"
+#include "hydra/hydra_core.h"
 
 TEST(HydraCore, AddTest) {
     EXPECT_EQ(8, AddInts(3, 5));

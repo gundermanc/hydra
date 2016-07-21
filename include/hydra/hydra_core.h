@@ -2,6 +2,6 @@
 // (C) 2016 Christian Gunderman
 // Library Code Header
 
-#include <iostream>
+#include "hydra/hydra_base.h"
 
-int AddInts(int a, int b);
+HyAPI int AddInts(int a, int b);

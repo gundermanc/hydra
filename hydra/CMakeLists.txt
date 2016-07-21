@@ -12,4 +12,4 @@ add_executable (
     main.cc)
 target_link_libraries(
     hydra
-    hydra_core)
+    hydra_core)

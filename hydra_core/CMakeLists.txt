@@ -8,6 +8,7 @@
 # with target_link_library() and includes in the C/C++ files.
 add_library (
     hydra_core
+    SHARED
     hydra_core.cc)
 
 # --------------------- Tests --------------------- 

@@ -9,7 +9,7 @@ git submodule init
 git submodule update
 cmake .
 make
-./example_lib_tests
+./hydra_core/hydra_core_tests
 
 # Kill build if test fails.
 if [[ $? != 0 ]]; then

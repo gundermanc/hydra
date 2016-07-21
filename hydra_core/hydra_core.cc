@@ -3,7 +3,8 @@
 // Library Code
 
 #include <iostream>
+#include "hydra/hydra_core.h"
 
-int AddInts(int a, int b) {
+HyAPI int AddInts(int a, int b) {
     return a + b;
 }
