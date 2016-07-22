@@ -8,18 +8,21 @@
 
 #include <windows.h>
 
+// Dynamically loaded library (.dll on Windows, .so on *nix).
 typedef HMODULE HyLibrary;
 
 #elif __linux__  // _WIN32
 
 #include <dlfcn.h>
 
+// Dynamically loaded library (.dll on Windows, .so on *nix).
 typedef void* HyLibrary;
 
 #elif __APPLE__ // __linux__
 
 #include <dlfcn.h>
 
+// Dynamically loaded library (.dll on Windows, .so on *nix).
 typedef void* HyLibrary;
 
 #else           // __APPLE__

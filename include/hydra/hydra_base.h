@@ -5,6 +5,8 @@
 #ifndef HYDRA_BASE__H__
 #define HYDRA_BASE__H__
 
+#include <cstdlib>
+
 #define HyBool   bool
 #define HyStr    char*
 #define HyPtr    void*

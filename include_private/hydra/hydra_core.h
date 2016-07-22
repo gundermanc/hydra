@@ -2,6 +2,18 @@
 // (C) 2016 Christian Gunderman
 // Library Code Header
 
+#ifndef HYDRA_CORE__H__
+#define HYDRA_CORE__H__
+
 #include "hydra/hydra_base.h"
 
-HyAPI int AddInts(int a, int b);
+// Core extensibility component for Hydra.
+typedef void* HyServiceManager;
+
+// Creates a new instance of HydraServiceManager.
+HyAPI HyServiceManager* HyCreateServiceManager();
+
+// Frees an instance of HydraServiceManager.
+HyAPI void HyFreeServiceManager(HyServiceManager* serviceManager);
+
+#endif // HYDRA_CORE__H__

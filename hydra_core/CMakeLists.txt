@@ -11,7 +11,8 @@ include_directories(../include_private)
 add_library (
     hydra_core
     SHARED
-    hydra_core.cc)
+    hydra_service_manager.cc
+    hydra_service_manager_private.cc)
 
 # --------------------- Tests --------------------- 
 # Create a new executable hydra_core_tests that we can execute to
@@ -20,6 +21,6 @@ add_library (
 # that have the application entry point.
 add_executable (
     hydra_core_tests
-    hydra_core_test.cc)
+    hydra_service_manager_test.cc)
 target_link_libraries (hydra_core_tests hydra_core)
 target_link_libraries (hydra_core_tests gtest gtest_main)
