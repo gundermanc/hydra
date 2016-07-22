@@ -19,8 +19,12 @@ link_directories(${gtest_BINARY_DIR}/src)
 add_subdirectory (googletest)
 include_directories (${gtest_SOURCE_DIR}/include ${gtest_SOURCE_DIR})
 
+# ---------- Operating System Dependencies ----------
+add_subdirectory(hydra_osdeps)
+
 # --------------------- Core Lib -------------------- 
 add_subdirectory(hydra_core)
+
 
 # --------------------- Main App -------------------- 
 add_subdirectory(hydra)

@@ -9,7 +9,7 @@
 #include "hydra/hydra_core.h"
 
 // Project Entry point
-HyPrivate int main() {
+int main() {
     std::cout << "Don't be hasty, wait and see ;)" << std::endl;
     return EXIT_SUCCESS;
 }

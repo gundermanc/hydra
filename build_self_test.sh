@@ -15,3 +15,10 @@ make
 if [[ $? != 0 ]]; then
    exit 1
 fi
+
+./hydra_osdeps/hydra_osdeps_tests
+
+# Kill build if test fails.
+if [[ $? != 0 ]]; then
+   exit 1
+fi

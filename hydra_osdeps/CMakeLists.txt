@@ -1,6 +1,6 @@
 # Project Hydra
 # (C) 2016 Christian Gunderman
-# Core Library Build File
+# Operating System Dependencies Library Build File
 
 include_directories(../include_private)
 
@@ -9,9 +9,9 @@ include_directories(../include_private)
 # Think Java "package" that we can import into other subprojects
 # with target_link_library() and includes in the C/C++ files.
 add_library (
-    hydra_core
+    hydra_osdeps
     SHARED
-    hydra_core.cc)
+    hydra_osdeps.cc)
 
 # --------------------- Tests --------------------- 
 # Create a new executable hydra_core_tests that we can execute to
@@ -19,7 +19,7 @@ add_library (
 # from the gtest library and gtest_main library provided by GoogleTest
 # that have the application entry point.
 add_executable (
-    hydra_core_tests
-    hydra_core_test.cc)
-target_link_libraries (hydra_core_tests hydra_core)
-target_link_libraries (hydra_core_tests gtest gtest_main)
+    hydra_osdeps_tests
+    hydra_osdeps_test.cc)
+target_link_libraries (hydra_osdeps_tests hydra_osdeps)
+target_link_libraries (hydra_osdeps_tests gtest gtest_main)

@@ -2,6 +2,8 @@
 # (C) 2016 Christian Gunderman
 # Command Line Application Build File
 
+include_directories(../include_private)
+
 # --------------------- Entry Point --------------------- 
 # Our non-testable entry point:
 # This produces an executable called hydra
@@ -12,4 +14,5 @@ add_executable (
     main.cc)
 target_link_libraries(
     hydra
-    hydra_core)
+    hydra_core
+    hydra_osdeps)
