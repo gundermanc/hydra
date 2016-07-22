@@ -11,7 +11,7 @@ include_directories(../include_private)
 add_library (
     hydra_osdeps
     SHARED
-    hydra_osdeps.cc)
+    hydra_loader.cc)
 
 # --------------------- Tests --------------------- 
 # Create a new executable hydra_core_tests that we can execute to

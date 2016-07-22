@@ -5,11 +5,15 @@
 #ifndef HYDRA_BASE__H__
 #define HYDRA_BASE__H__
 
+#define HyBool   bool
+#define HyStr    char*
+#define HyPtr    void*
+
 #ifdef _WIN32    // Windows
 #ifdef _MSC_VER  // Visual C++
 
 // TODO: Windows calling convention.
-#define HyAPI    __declspec(dllexport)
+#define HyAPI    extern "C" __declspec(dllexport)
 #define HyInternal
 #define HyPrivate  static
 
