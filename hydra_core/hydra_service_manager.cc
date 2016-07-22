@@ -16,6 +16,7 @@ HyAPI void HyFreeServiceManager(HyServiceManager* serviceManager) {
 
     // Ignore NULL serviceManager.
     if (serviceManager == NULL) {
+        HyAssert(false);
         return;
     }
 

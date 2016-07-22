@@ -11,6 +11,7 @@ include_directories(../include_private)
 add_library (
     hydra_osdeps
     SHARED
+    hydra_fileio.cc
     hydra_loader.cc)
 
 # --------------------- Tests --------------------- 

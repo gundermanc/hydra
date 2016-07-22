@@ -12,6 +12,7 @@ HyAPI HyLibrary HyLoadLibrary(HyStr libraryFileName) {
     // NULL filename, don't open a library, for consistent behavior between
     // various platforms.
     if (libraryFileName == NULL) {
+        HyAssert(false);
         return NULL;
     }
 
@@ -31,11 +32,12 @@ HyAPI HyBool HyFreeLibrary(HyLibrary library) {
 
     // Cannot free a NULL library.
     if (library == NULL) {
+        HyAssert(false);
         return false;
     }
 
 #ifdef _WIN32
-    return FreeLibrary(library);
+    return static_cast<HyBool>(FreeLibrary(library));
 #elif __linux__
     return dlclose(library) == 0;
 #elif __APPLE__
@@ -50,6 +52,7 @@ HyAPI HyPtr HyLibraryProcedureAddress(HyLibrary library, HyStr symbolName) {
 
     // Check inputs.
     if (library == NULL || symbolName == NULL) {
+        HyAssert(false);
         return NULL;
     }
 

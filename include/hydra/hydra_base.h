@@ -5,9 +5,19 @@
 #ifndef HYDRA_BASE__H__
 #define HYDRA_BASE__H__
 
+#include <cassert>
 #include <cstdlib>
 
+#ifndef _DEBUG
+#define NDEBUG
+#endif
+
+#define HyAssert assert
+
 #define HyBool   bool
+#define HyChar   char
+#define HyInt    int
+#define HyLong   long
 #define HyStr    char*
 #define HyPtr    void*
 

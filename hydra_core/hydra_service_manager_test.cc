@@ -15,8 +15,3 @@ TEST(HydraCoreServiceManager, HyCreateFreeServiceManager) {
 
     HyFreeServiceManager(serviceManager);
 }
-
-// Checks for no crash on free NULL ServiceManager.
-TEST(HydraCoreServiceManager, HyFreeServiceManagerNoCrash) {
-    HyFreeServiceManager(NULL);
-}
