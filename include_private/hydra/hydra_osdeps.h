@@ -2,6 +2,9 @@
 // (C) 2016 Christian Gunderman
 // Operating System Dependencies Library Code Header
 
+#ifndef HYDRA_OSDEPS__H__
+#define HYDRA_OSDEPS__H__
+
 #include "hydra/hydra_base.h"
 
 #ifdef _WIN32
@@ -14,6 +17,7 @@ typedef HMODULE HyLibrary;
 #elif __linux__  // _WIN32
 
 #include <dlfcn.h>
+#include <dirent.h>
 
 // Dynamically loaded library (.dll on Windows, .so on *nix).
 typedef void* HyLibrary;
@@ -21,6 +25,7 @@ typedef void* HyLibrary;
 #elif __APPLE__ // __linux__
 
 #include <dlfcn.h>
+#include <dirent.h>
 
 // Dynamically loaded library (.dll on Windows, .so on *nix).
 typedef void* HyLibrary;
@@ -77,3 +82,38 @@ HyAPI HyLong HyCurrentOffsetOfFile(HyFile* file);
 // Reads a single Char from a file and advances the cursor within the file.
 // Returns -1 on error.
 HyAPI HyInt HyReadCharFromFile(HyFile* file);
+
+#ifdef _WIN32
+
+// Handle to an in-progress directory enumeration.
+typedef HANDLE HyDirectoryEnumContext;
+
+#elif __linux__ // WIN32
+
+// Handle to an in-progress directory enumeration.
+typedef DIR* HyDirectoryEnumContext;
+
+#elif __APPLE__ // __linux__
+
+// Handle to an in-progress directory enumeration.
+typedef DIR* HyDirectoryEnumContext;
+
+#endif // _WIN32
+
+// Structure containing enumerated file info.
+typedef struct HyFileInfo {
+    HyBool isDirectory;
+    HyStr fileName;
+} HyFileInfo;
+
+// Starts enumerating files in a directory and gets the first file/directory entry.
+HyAPI HyDirectoryEnumContext BeginEnumDirectory(const HyStr directory, HyFileInfo* fileInfo);
+
+// Gets the next file/directory in a directory enumeration. Returns false on error or
+// no more files.
+HyAPI HyBool EnumNextInDirectory(HyDirectoryEnumContext enumContext, HyFileInfo* fileInfo);
+
+// Ends an in-progress directory contents enumeration.
+HyAPI HyBool FinishEnumDirectory(HyDirectoryEnumContext enumContext);
+
+#endif // HYDRA_OSDEPS__H__

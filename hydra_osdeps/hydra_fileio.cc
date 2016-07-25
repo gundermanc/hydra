@@ -142,3 +142,102 @@ HyAPI HyInt HyWriteCharToFile(HyFile* file, HyChar character) {
         return c;
     }
 }
+
+#ifdef _WIN32
+HyPrivate void WriteHyFileInfoFromWin32FindData(WIN32_FIND_DATA* win32Data, HyFileInfo* fileInfo) {
+    fileInfo->isDirectory = (win32Data->dwFileAttributes & FILE_ATTRIBUTE_DIRECTORY);
+    fileInfo->fileName = win32Data->cFileName;
+}
+#endif // _WIN32
+
+HyAPI HyDirectoryEnumContext BeginEnumDirectory(const HyStr directory, HyFileInfo* fileInfo) {
+
+    // Fail if missing argument.
+    if (directory == NULL || fileInfo == NULL) {
+        HyAssert(false);
+        return NULL;
+    }
+
+#ifdef _WIN32
+    WIN32_FIND_DATA foundData;
+    HyDirectoryEnumContext context = FindFirstFile(directory, &foundData);
+
+    WriteHyFileInfoFromWin32FindData(&foundData, fileInfo);
+
+    return context;
+
+#else  // _WIN32
+
+    // __linux__ && __APPLE__
+    HyDirectoryEnumContext context = opendir(directory);
+
+    // Fail fast if directory open fails.
+    if (context == NULL) {
+        return NULL;
+    }
+
+    // Try to read first file.
+    if (EnumNextInDirectory(context, fileInfo)) {
+        return context;
+    }
+    else {
+        return NULL;
+    }
+
+#endif // _WIN32
+
+}
+
+HyAPI HyBool EnumNextInDirectory(HyDirectoryEnumContext enumContext, HyFileInfo* fileInfo) {
+
+    // Fail if missing argument.
+    if (enumContext == NULL || fileInfo == NULL) {
+        HyAssert(false);
+        return NULL;
+    }
+
+#ifdef _WIN32
+    WIN32_FIND_DATA foundData;
+    HyBool result = FindNextFile(enumContext, &foundData);
+
+    WriteHyFileInfoFromWin32FindData(&foundData, fileInfo);
+
+    return result;
+
+#else // _WIN32
+
+    // __linux__ && __APPLE__
+    struct dirent* entry;
+
+    // Failed to read file/directory entry, return.
+    if ((entry = readdir(enumContext)) == NULL) {
+        return false;
+    }
+
+    // POTENTIAL BUG BUG BUG: The line directly below is not POSIX and may fail on some systems.
+    fileInfo->isDirectory = entry->d_type == DT_DIR;
+    fileInfo->fileName = entry->d_name;
+
+#endif // _WIN32
+}
+
+HyAPI HyBool FinishEnumDirectory(HyDirectoryEnumContext enumContext) {
+
+    // Fail if missing argument.
+    if (enumContext == NULL) {
+        HyAssert(false);
+        return NULL;
+    }
+
+#ifdef _WIN32
+
+    return static_cast<HyBool>(FindClose(enumContext));
+
+#else // _WIN32
+
+    // __linux__ && __APPLE__
+    return closedir(enumContext) == 0;
+
+#endif // _WIN32
+
+}
