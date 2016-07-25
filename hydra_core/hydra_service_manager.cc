@@ -4,7 +4,7 @@
 
 #include "hydra/hydra_core.h"
 
-#include "hydra_service_manager_private.h"
+#include "internal/hydra_service_manager_private.h"
 
 using namespace hydra::core;
 

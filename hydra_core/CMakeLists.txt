@@ -4,6 +4,8 @@
 
 include_directories(../include_private)
 
+add_subdirectory(internal)
+
 # --------------------- Code --------------------- 
 # Put testable code in its own library:
 # Think Java "package" that we can import into other subprojects
@@ -11,8 +13,10 @@ include_directories(../include_private)
 add_library (
     hydra_core
     SHARED
-    hydra_service_manager.cc
-    hydra_service_manager_private.cc)
+    hydra_service_manager.cc)
+target_link_libraries(
+    hydra_core
+    hydra_core_internal)
 
 # --------------------- Tests --------------------- 
 # Create a new executable hydra_core_tests that we can execute to
@@ -22,5 +26,8 @@ add_library (
 add_executable (
     hydra_core_tests
     hydra_service_manager_test.cc)
-target_link_libraries (hydra_core_tests hydra_core)
+target_link_libraries (
+    hydra_core_tests
+    hydra_core
+    hydra_core_internal)
 target_link_libraries (hydra_core_tests gtest gtest_main)

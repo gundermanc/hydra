@@ -10,13 +10,13 @@ include_directories(include)
 
 # --------------------- Tests --------------------- 
 # Stuff needed by Google Test, just copy paste this.
-include(googletest/cmake/internal_utils.cmake)
+include(extern/googletest/cmake/internal_utils.cmake)
 config_compiler_and_linker()
 link_directories(${gtest_BINARY_DIR}/src)
 
 # Instruct CMAKE to build googletest code and add it's headers
 # to our include paths for our compilers.
-add_subdirectory (googletest)
+add_subdirectory (extern/googletest)
 include_directories (${gtest_SOURCE_DIR}/include ${gtest_SOURCE_DIR})
 
 # ---------- Operating System Dependencies ----------
