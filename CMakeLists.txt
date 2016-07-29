@@ -6,6 +6,7 @@
 # CMAKE version and Project Name
 cmake_minimum_required (VERSION 2.8.7)
 project (Hydra)
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${PROJECT_SOURCE_DIR}/deploy)
 include_directories(include)
 
 # --------------------- Tests --------------------- 
