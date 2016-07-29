@@ -67,7 +67,7 @@ enum HySeekFileRelativeTo {
 };
 
 // Opens a file for reading, writing, or appending in Hydra.
-HyAPI HyFile* HyOpenFile(HyStr fileName, HyOpenFileMode mode);
+HyAPI HyFile* HyOpenFile(const HyStr fileName, HyOpenFileMode mode);
 
 // Closes a file opened with HyOpenFile().
 HyAPI void HyCloseFile(HyFile* file);
@@ -82,6 +82,10 @@ HyAPI HyLong HyCurrentOffsetOfFile(HyFile* file);
 // Reads a single Char from a file and advances the cursor within the file.
 // Returns -1 on error.
 HyAPI HyInt HyReadCharFromFile(HyFile* file);
+
+// Writes a single Char to a file.
+// Returns -1 on error.
+HyAPI HyInt HyWriteCharToFile(HyFile* file, HyChar character);
 
 #ifdef _WIN32
 

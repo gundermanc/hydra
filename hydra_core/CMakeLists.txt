@@ -3,6 +3,7 @@
 # Core Library Build File
 
 include_directories(../include_private)
+include_directories(../extern/json/src)
 
 add_subdirectory(internal)
 

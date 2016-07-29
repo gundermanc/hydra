@@ -14,7 +14,7 @@ static const char FOpenFileReadUpdate[] = "r+";
 static const char FOpenFileWriteUpdate[] = "w+";
 static const char FOpenFileAppendUpdate[] = "a+";
 
-HyAPI HyFile* HyOpenFile(HyStr fileName, HyOpenFileMode mode) {
+HyAPI HyFile* HyOpenFile(const HyStr fileName, HyOpenFileMode mode) {
 
     // NULL filename, don't open a file.
     if (fileName == NULL) {

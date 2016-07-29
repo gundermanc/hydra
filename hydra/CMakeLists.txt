@@ -3,6 +3,7 @@
 # Command Line Application Build File
 
 include_directories(../include_private)
+include_directories(../extern/json/src)
 
 # --------------------- Entry Point --------------------- 
 # Our non-testable entry point:
