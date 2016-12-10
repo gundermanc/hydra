@@ -21,11 +21,13 @@
 #define HyStr    char*
 #define HyPtr    void*
 
+#define HyAPIBlock extern "C"
+
 #ifdef _WIN32    // Windows
 #ifdef _MSC_VER  // Visual C++
 
 // TODO: Windows calling convention.
-#define HyAPI    extern "C" __declspec(dllexport)
+#define HyAPI      __declspec(dllexport)
 #define HyInternal
 #define HyPrivate  static
 

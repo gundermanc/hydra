@@ -14,6 +14,8 @@ static const char FOpenFileReadUpdate[] = "r+";
 static const char FOpenFileWriteUpdate[] = "w+";
 static const char FOpenFileAppendUpdate[] = "a+";
 
+HyAPIBlock {
+
 HyAPI HyFile* HyOpenFile(const HyStr fileName, HyOpenFileMode mode) {
 
     // NULL filename, don't open a file.
@@ -241,3 +243,5 @@ HyAPI HyBool FinishEnumDirectory(HyDirectoryEnumContext enumContext) {
 #endif // _WIN32
 
 }
+
+} // HyAPIBlock

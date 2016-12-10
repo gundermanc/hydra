@@ -7,6 +7,8 @@
 
 #include "hydra/hydra_base.h"
 
+HyAPIBlock {
+
 // Core extensibility component for Hydra.
 typedef void* HyServiceManager;
 
@@ -15,5 +17,7 @@ HyAPI HyServiceManager* HyCreateServiceManager();
 
 // Frees an instance of HydraServiceManager.
 HyAPI void HyFreeServiceManager(HyServiceManager* serviceManager);
+
+} // HyAPIBlock
 
 #endif // HYDRA_CORE__H__

@@ -8,6 +8,8 @@
 
 using namespace hydra::core;
 
+HyAPIBlock {
+
 HyAPI HyServiceManager* HyCreateServiceManager() {
     return reinterpret_cast<HyServiceManager*>(new HyServiceManagerPrivate());
 }
@@ -22,3 +24,5 @@ HyAPI void HyFreeServiceManager(HyServiceManager* serviceManager) {
 
     delete reinterpret_cast<HyServiceManagerPrivate*>(serviceManager);
 }
+
+} // HyAPIBlock

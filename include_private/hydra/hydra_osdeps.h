@@ -7,6 +7,8 @@
 
 #include "hydra/hydra_base.h"
 
+HyAPIBlock {
+
 #ifdef _WIN32
 
 #include <windows.h>
@@ -119,5 +121,7 @@ HyAPI HyBool EnumNextInDirectory(HyDirectoryEnumContext enumContext, HyFileInfo*
 
 // Ends an in-progress directory contents enumeration.
 HyAPI HyBool FinishEnumDirectory(HyDirectoryEnumContext enumContext);
+
+} // HyAPIBlock
 
 #endif // HYDRA_OSDEPS__H__

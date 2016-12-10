@@ -7,6 +7,8 @@
 #include "hydra/hydra_core.h"
 #include "hydra/hydra_osdeps.h"
 
+HyAPIBlock{
+
 HyAPI HyLibrary HyLoadLibrary(HyStr libraryFileName) {
 
     // NULL filename, don't open a library, for consistent behavior between
@@ -66,3 +68,5 @@ HyAPI HyPtr HyLibraryProcedureAddress(HyLibrary library, HyStr symbolName) {
 #error Unsupported Operating System
 #endif
 }
+
+} // HyAPIBlock
