@@ -20,6 +20,7 @@
 #define HyLong   long
 #define HyStr    char*
 #define HyPtr    void*
+#define HySize   size_t
 
 #define HyAPIBlock extern "C"
 
